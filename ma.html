@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stylish Navbar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f2f5;
+    }
+
+    nav {
+      background: linear-gradient(90deg, #1f1c2c, #928dab);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      color: white;
+      font-size: 26px;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      left: 0;
+      bottom: -4px;
+      background-color: white;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #1f1c2c;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 220px;
+        padding: 20px;
+        border-radius: 10px 0 0 10px;
+        gap: 20px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-icon {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">MyPortfolio</div>
+    <div class="menu-icon" onclick="toggleNavbar()">☰</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Projects</a>
+      <a href="#">Skills</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+  <script>
+    function toggleNavbar() {
+      const navLinks = document.getElementById("navLinks");
+      navLinks.classList.toggle("active");
+    }
+  </script>
+
+</body>
+</html>
+
